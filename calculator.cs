@@ -16,10 +16,10 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            int a,b;
+            int a, b;
             char phepToan;
-            double ketQua=0;
-            
+            double ketQua = 0;
+
             // Input: Không thay đổi phần này
             Console.Write("Nhap a = ");
             a = int.Parse(Console.ReadLine());
@@ -28,14 +28,34 @@ namespace Calculator
             Console.Write("Nhap phep toan (+,-,*,/): ");
             phepToan = char.Parse(Console.ReadLine());
 
-            /* Viết code xử lý của bạn ở đây
-               Dựa vào a,b và phép toán nhập vào hãy tính giá trị biểu thức
-               và in giá trị biểu thức lên màn hình.
-              
-            */
-
-            
-
+            // Xử lý
+            switch (phepToan)
+            {
+                case '+':
+                    ketQua = a + b;
+                    Console.WriteLine("{0} + {1} = {2}", a, b, ketQua);
+                    break;
+                case '-':
+                    ketQua = a - b;
+                    Console.WriteLine("{0} - {1} = {2}", a, b, ketQua);
+                    break;
+                case '*':
+                    ketQua = a * b;
+                    Console.WriteLine("{0} * {1} = {2}", a, b, ketQua);
+                    break;
+                case '/':
+                    if (b == 0)
+                        Console.WriteLine("Error!");
+                    else
+                    {
+                        ketQua = (double)a / b;
+                        Console.WriteLine("{0} / {1} = {2}", a, b, ketQua);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Phep toan khong hop le!");
+                    break;
+            }
         }
     }
 }
