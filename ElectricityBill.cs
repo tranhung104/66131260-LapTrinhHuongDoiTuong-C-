@@ -1,7 +1,7 @@
 /*
 Viết chương trình tính tiền điện phải trả dựa vào số kWh tiêu thụ và bảng giá.
 
-Bảng giá:
+Bảng giá: 
 Số kWh <= 100: 2000 đ/kWh
 Từ kWh thứ 101 đến 150: 2500 đ/kWh
 Từ kWh thứ 151 trở đi 3000 đ/kWh
