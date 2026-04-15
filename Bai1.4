@@ -1,0 +1,105 @@
+using System;
+namespace bai1.4
+{
+    class Program
+    {
+        // a)
+        static int[] NhapMang(int n)
+        {
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Nhap arr[{0}] = ", i);
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            return arr;
+        }
+        // b)
+        static void InMang(int[] arr)
+        {
+            Console.Write("Mang: ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write("{0} ", arr[i]);
+            Console.WriteLine();
+        }
+        // c)
+        static int TimMax(int[] arr)
+        {
+            int max = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+                if (arr[i] > max)
+                    max = arr[i];
+            return max;
+        }
+        // d)
+        static bool KiemTraTangDan(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+                if (arr[i] > arr[i + 1])
+                    return false;
+            return true;
+        }
+        // e)
+        static void SapXepTangDan(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                    if (arr[j] > arr[j + 1])
+                    {
+                        int temp = arr[j];
+                        arr[j]   = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+        }
+        // f)
+        static void TachMang(int[] arr, out int[] chan, out int[] le)
+        {
+
+            int demChan = 0, demLe = 0;
+            foreach (int x in arr)
+                if (x % 2 == 0) demChan++;
+                else            demLe++;
+
+            chan = new int[demChan];
+            le   = new int[demLe];
+
+            int iChan = 0, iLe = 0;
+            foreach (int x in arr)
+                if (x % 2 == 0) chan[iChan++] = x;
+                else             le[iLe++]    = x;
+        }
+        static void Main(string[] args)
+        {
+            // Nhập n
+            Console.Write("Nhap so phan tu n = ");
+            int n = int.Parse(Console.ReadLine());
+
+            // a)
+            int[] arr = NhapMang(n);
+
+            // b)
+            Console.Write("\n[b] ");
+            InMang(arr);
+
+            // c)
+            Console.WriteLine("\n[c] Phan tu lon nhat: {0}", TimMax(arr));
+
+            // d)
+            Console.WriteLine("\n[d] Mang da tang dan: {0}", KiemTraTangDan(arr));
+
+            // e)
+            SapXepTangDan(arr);
+            Console.Write("\n[e] Sau khi sap xep: ");
+            InMang(arr);
+
+            // f)
+            int[] arrChan, arrLe;
+            TachMang(arr, out arrChan, out arrLe);
+
+            Console.Write("\n[f] Mang chan: ");
+            InMang(arrChan);
+            Console.Write("    Mang le:  ");
+            InMang(arrLe);
+        }
+    }
+}
